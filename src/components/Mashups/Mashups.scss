@@ -1,3 +1,19 @@
 .Mashups {
   background-color: rgb(160, 159, 95);
 }
+
+.Mashups li {
+  list-style-type: none;
+}
+
+.mashupsCard {
+  background-color: white;
+  margin: .5%;
+  height: 300px;
+  width: 250px;
+  padding: 2%;
+}
+
+.mashupsCard img {
+  height: 100px;
+}
