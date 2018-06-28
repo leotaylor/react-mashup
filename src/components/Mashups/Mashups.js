@@ -8,7 +8,13 @@ class Mashups extends React.Component {
     // const mashups = this.props.listings; same as above
     const mashupsItemComponents = mashups.map((item) => {
       return (
-        <li key={item.id}>{item.name}</li>
+        <div className="mashupsCard col-sm-3">
+          {/* <div className="caption"> */}
+          <li key={item.id}><img src={item.imgUrl} alt="strange creature"/></li>
+          <li key={item.id}><h2 id="thumbnail-label">{item.name}</h2></li>
+          <li key={item.id}>{item.description}</li>
+          {/* </div> */}
+        </div>
       );
     });
     return (

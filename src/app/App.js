@@ -4,8 +4,8 @@ import connection from '../firebaseRequests/connection';
 import mashupRequest from '../firebaseRequests/mashup';
 
 import Mashups from '../components/Mashups/Mashups';
+import InputForm from '../components/InputForm/InputForm';
 
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
     connection();
     mashupRequest.getRequest()
       .then((mashups) => {
-        this.setState({mashups})
+        this.setState({mashups});
       })
       .catch((err) => {
         console.error('error with mashup GET', err);
@@ -27,11 +27,13 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-        <div className='col-sm-6'>
-          <Mashups mashups={this.state.mashups}/>
+        <div className='col-sm-8'>
+          <div className="row Mashups">
+            <Mashups mashups={this.state.mashups}/>
+          </div>
         </div>
-        <div className='col-sm-6'>
-          <h2>Form Goes Here</h2>
+        <div className='col-sm-4'>
+          <InputForm />
         </div>
       </div>
     );
