@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './InputForm.css';
 
 class InputForm extends React.Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  }
+
   state = {
     newMashup: {
       name: '',
@@ -41,43 +46,54 @@ class InputForm extends React.Component {
     return (
       <div className="InputForm">
         <h2>Add New Animal</h2>
-        <div className="input-group">
-          <span className="input-group-addon" id="basic-addon1">Name:</span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder=""
-            id="name"
-            aria-describedby="basic-addon1"
-            value={newMashup.name}
-            onChange={this.nameChange}
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-addon" id="basic-addon1">imageURL:</span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder=""
-            id="imgUrl"
-            aria-describedby="basic-addon1"
-            value={newMashup.imgUrl}
-            onChange={this.imgChange}
-          />
-        </div>
-        <div className="input-group">
-          <span className="input-group-addon" id="basic-addon1">Description:</span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder=""
-            id="desc"
-            aria-describedby="basic-addon1"
-            value={newMashup.description}
-            onChange={this.descChange}
-          />
-        </div>
-        <button className="btn btn-danger col-xs-6 col-xs-offset-3">Save Hybrid</button>
+        <form onSubmit={this.formSubmit}>
+          <div className="row">
+            <fieldset>
+              <label htmlFor="name">Name:</label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                id="name"
+                aria-describedby="basic-addon1"
+                value={newMashup.name}
+                onChange={this.nameChange}
+              />
+            </fieldset>
+          </div>
+          <div className="row">
+            <fieldset>
+              <label htmlFor="imgUrl">ImageUrl:</label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                id="imgUrl"
+                aria-describedby="basic-addon1"
+                value={newMashup.imgUrl}
+                onChange={this.imgChange}
+              />
+            </fieldset>
+          </div>
+          <div className="row">
+            <fieldset>
+              <label htmlFor="description">Description:</label>
+              <br />
+              <input
+                type="text"
+                className="form-control"
+                placeholder=""
+                id="desc"
+                aria-describedby="basic-addon1"
+                value={newMashup.description}
+                onChange={this.descChange}
+              />
+            </fieldset>
+          </div>
+          <button className="btn btn-danger col-xs-6 col-xs-offset-3">Save Hybrid</button>
+        </form>
       </div>
     );
   }
