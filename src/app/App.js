@@ -13,6 +13,19 @@ class App extends Component {
     mashups: [],
   }
 
+  formSubmitEvent = (newMashup) => {
+    mashupRequest.postRequest(newMashup)
+      .then(() => {
+        mashupRequest.getRequest()
+          .then((mashups) => {
+            this.setState({mashups});
+          });
+      })
+      .catch((err) => {
+        console.error('error with post submit', err);
+      });
+  }
+
   componentDidMount () {
     connection();
     mashupRequest.getRequest()
@@ -33,7 +46,9 @@ class App extends Component {
           </div>
         </div>
         <div className='col-sm-4'>
-          <InputForm />
+          <InputForm
+            onSubmit={this.formSubmitEvent}
+          />
         </div>
       </div>
     );
