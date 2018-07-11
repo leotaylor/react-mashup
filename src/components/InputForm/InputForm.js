@@ -36,8 +36,18 @@ class InputForm extends React.Component {
 
   formSubmit = (e) => {
     const {onSubmit} = this.props;
+    const {newMashup} = this.state;
     e.preventDefault();
-    onSubmit(this.state.newMashup);
+    if (
+      newMashup.name &&
+      newMashup.description &&
+      newMashup.imgUrl
+    ) {
+      onSubmit(this.state.newMashup);
+      this.setState({newMashup: newMashup});
+    } else {
+      alert('Fill in all fields');
+    }
   }
 
   render () {
@@ -91,8 +101,8 @@ class InputForm extends React.Component {
                 onChange={this.descChange}
               />
             </fieldset>
+            <button className="btn btn-danger col-xs-6 col-xs-offset-3">Save Hybrid</button>
           </div>
-          <button className="btn btn-danger col-xs-6 col-xs-offset-3">Save Hybrid</button>
         </form>
       </div>
     );
